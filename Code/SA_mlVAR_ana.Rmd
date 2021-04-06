@@ -1,0 +1,52 @@
+---
+title: "SA_mlVAR_ana_figures"
+output: html_notebook
+---
+Sophie Wohltjen, 4/2/21
+This notebook computes the mlVAR analysis between eye contact, synchrony, and pupil size, and re-creates the figures used in the manuscript
+
+Read in dataframe computed using SA_make_csvs_forR.py
+
+```{r}
+base_directory = '/Users/sophie/Dropbox/EyeContactinConversation'
+mlvar_data = read.csv(paste(base_directory,'/Analyses/SA_data_for_mlvar_ana.csv',sep=''))
+#make subjects and dyads factors
+mlvar_data$subject <- as.factor(mlvar_data$subject)
+mlvar_data$dyad <- as.factor(mlvar_data$dyad)
+#compute synchrony, log transform to correct for heteroscedasticity
+mlvar_data$Synchrony <- -log(mlvar_data$dtw)
+colnames(mlvar_data) <- c('X','dyad','subject','dtw','EyeContact','PupilSize','Synchrony')
+View(mlvar_data)
+```
+
+run the mlVAR model on the dataframe
+
+```{r}
+mlvar_1s <- mlVAR(mlvar_data,vars=c("Synchrony","EyeContact","PupilSize"),idvar="subject",lags=1,temporal = "orthogonal")
+summary(mlvar_1s)
+```
+
+Now plot the output as it's plotted in the manuscript
+
+```{r}
+plot(mlvar_1s,type='temporal',
+             fade=FALSE,edge.labels=TRUE,vsize=20,border.width = 3,
+             edge.width=2,edge.label.cex=1.5,
+             mar=c(15,15,15,15)
+)
+plot(mlvar_1s,type='contemporaneous',layout = 'circle',
+                fade=FALSE,edge.labels=TRUE,vsize=20,border.width=3,
+                edge.width=2,edge.label.cex=1.5,
+                mar=c(15,15,15,15)
+)
+plot(mlvar_1s,type='between',layout='circle',
+             fade=FALSE,edge.labels=TRUE,vsize=20,border.width=3,
+             edge.width=2,edge.label.cex=1.5,
+             mar=c(15,15,15,15)
+)
+```
+
+```{r}
+```
+
+
