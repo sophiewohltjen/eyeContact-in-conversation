@@ -1,0 +1,10 @@
+cff-version: 1
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Wohltjen, Wheatley
+    given-names: Sophie, Thalia
+    orcid: https://orcid.org/0000-0003-2931-9966
+title: “Data And Scripts for Eye Contact Marks the Rise and Fall of Shared Attention in Conversation“
+version: 1
+doi: https://github.com/sophiewohltjen/eyeContact-in-conversation
+date-released: 2021-04-06
