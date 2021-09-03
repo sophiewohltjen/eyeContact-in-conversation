@@ -7,7 +7,7 @@ authors:
 - family-names: "Wheatley"
   given-names: "Thalia"
   orcid: "https://orcid.org/0000-0001-7252-1188"
-title: "Data and Scripts for Eye Contact Marks The Rise and Fall of Shared Attention in Conversation"
+title: "eyeContact-in-conversation"
 version: 1.0.0
 date-released: 2021-04-06
 url: "https://github.com/sophiewohltjen/eyeContact-in-conversation"
